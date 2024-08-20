@@ -1,5 +1,5 @@
-import { NewGame } from '@/components';
+import { Greeting } from '@/components';
 
 export default function Home() {
-  return <NewGame />;
+  return <Greeting />;
 }

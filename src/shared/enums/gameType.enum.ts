@@ -1,4 +1,4 @@
 export const GameType = {
-  NEW: 'new',
+  START: 'start',
   FINISHED: 'finished',
 } as const;

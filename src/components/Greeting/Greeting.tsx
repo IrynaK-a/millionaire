@@ -1,16 +1,17 @@
+import clsx from 'clsx';
 import Image from 'next/image';
 import HandImage from '@/public/hand.svg';
-import styles from './NewGame.module.scss';
-import clsx from 'clsx';
 import { inter } from '@/styles/fonts';
 import { StartGameButton } from '@/components';
-import { AppRoute, ButtonText, GameType } from '@/shared/enums';
+import { AppRoute, ButtonText } from '@/shared/enums';
 import { IFineshedGame, INewGame } from '@/shared/interfaces';
+
+import styles from './Greeting.module.scss';
 
 type Props = INewGame | IFineshedGame;
 
-export const NewGame: React.FC<Props> = ({ type = 'new', score }) => {
-  const isNewGame = type === 'new';
+export const Greeting: React.FC<Props> = ({ type = 'start', score }) => {
+  const isNewGame = type === 'start';
   const buttonText = isNewGame ? ButtonText.START : ButtonText.TRY_AGAIN;
 
   return (

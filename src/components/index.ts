@@ -1,2 +1,2 @@
 export { StartGameButton } from './StartGameButton';
-export { NewGame } from './NewGame';
+export { Greeting } from './Greeting';
