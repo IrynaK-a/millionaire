@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "question": "What is the capital of Australia?",
+    "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "correctAnswers": [2],
+    "prize": 500
+  },
+  {
+    "id": 2,
+    "question": "Which element has the chemical symbol O?",
+    "answers": ["Gold", "Oxygen", "Hydrogen", "Carbon"],
+    "correctAnswers": [1],
+    "prize": 1000
+  },
+  {
+    "id": 3,
+    "question": "What is the largest planet in our solar system?",
+    "answers": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correctAnswers": [2],
+    "prize": 2000
+  },
+  {
+    "id": 4,
+    "question": "Which of the following are programming languages?",
+    "answers": ["JavaScript", "HTML", "Python", "CSS"],
+    "correctAnswers": [0, 2],
+    "prize": 4000
+  },
+  {
+    "id": 5,
+    "question": "Which language is the most spoken worldwide?",
+    "answers": ["English", "Mandarin Chinese", "Spanish", "Hindi"],
+    "correctAnswers": [1],
+    "prize": 8000
+  },
+  {
+    "id": 6,
+    "question": "Which famous scientist introduced the theory of relativity?",
+    "answers": [
+      "Isaac Newton",
+      "Nikola Tesla",
+      "Albert Einstein",
+      "Galileo Galilei"
+    ],
+    "correctAnswers": [2],
+    "prize": 16000
+  },
+  {
+    "id": 7,
+    "question": "What is the hardest natural substance on Earth?",
+    "answers": ["Gold", "Iron", "Diamond", "Quartz"],
+    "correctAnswers": [2],
+    "prize": 32000
+  },
+  {
+    "id": 8,
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "answers": ["China", "Thailand", "South Korea", "Japan"],
+    "correctAnswers": [3],
+    "prize": 64000
+  },
+  {
+    "id": 9,
+    "question": "What are the primary colors?",
+    "answers": ["Red", "Green", "Blue", "Black", "White"],
+    "correctAnswers": [0, 2],
+    "prize": 125000
+  },
+  {
+    "id": 10,
+    "question": "Which is the longest river in the world?",
+    "answers": ["Nile", "Amazon", "Yangtze", "Mississippi"],
+    "correctAnswers": [0],
+    "prize": 250000
+  },
+  {
+    "id": 11,
+    "question": "Which of these artists painted the Mona Lisa?",
+    "answers": [
+      "Vincent van Gogh",
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Claude Monet"
+    ],
+    "correctAnswers": [1],
+    "prize": 500000
+  },
+  {
+    "id": 12,
+    "question": "Who wrote the play 'Hamlet'?",
+    "answers": [
+      "Charles Dickens",
+      "Mark Twain",
+      "George Orwell",
+      "William Shakespeare"
+    ],
+    "correctAnswers": [3],
+    "prize": 1000000
+  }
+]
