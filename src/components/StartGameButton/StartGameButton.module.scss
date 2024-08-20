@@ -1,0 +1,34 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  color: $White-100;
+  font-size: 14px; 
+  font-weight: 600;
+  line-height: 116%;
+  border: none;
+  border-radius: 8px;
+  background-color: $Orange-100;
+
+  @include small-devices {
+    height: 58px;
+    font-size: 18px; 
+  }
+
+  @include tablet {
+    font-size: 20px;
+    width: 296px;
+    height: 64px;
+    
+  }
+
+  &:hover {
+    background-color: $Orange-80;
+    cursor: pointer;
+  }
+}

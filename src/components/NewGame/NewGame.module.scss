@@ -1,0 +1,98 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  height: 100vh;
+  padding: 80px 16px 48px;
+  
+  @include small-devices {
+    gap: 48px;
+    padding: 80px 32px 48px;
+  }
+
+  @include tablet {
+    flex-direction: row;
+    gap: 32px;
+    padding: 80px 32px 48px;
+  }
+}
+
+.startBackground {
+  background: linear-gradient(to bottom right, $White-100 50%, $Orange-5 50%);
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  min-height: 192px;
+  height: auto;
+  max-height: 367px;
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    max-width: 624px;
+  }
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 102px;
+
+  @include tablet {
+    align-items: flex-start;
+    gap: 64px;
+    max-width: 624px;
+  }
+}
+
+.textContainer {
+  width: 100%;
+  font-weight: 600;
+}
+
+.scoreTitle {
+  display: block;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+  line-height: 116%;
+  opacity: 0.5;
+
+
+  @include tablet {
+    font-size: 32px;
+    text-align: start;
+  }
+}
+
+.text {
+  font-size: 32px;
+  line-height: 116%;
+
+  @include tablet {
+    text-align: start;
+    font-size: 42px;
+  }
+
+  @include small-laptop {
+    font-size: 52px;
+  }
+
+  @include medium-laptop {
+    font-size: 56px;
+  }
+}
+
