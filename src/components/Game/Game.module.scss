@@ -1,0 +1,43 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.container {
+  position: relative;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+
+  @include small-laptop {
+    display: grid;
+    grid-template-columns: 7fr minmax(376px, 3fr);
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  @include small-devices {
+    top: 24px;
+    right: 24px;
+  }
+
+  @include small-laptop {
+    display: none;
+  }
+}
+
+.link {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url(../../public/menu.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include small-devices {
+    width: 32px;
+    height: 32px;
+  }
+}

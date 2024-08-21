@@ -76,11 +76,16 @@
     font-size: 32px;
     text-align: start;
   }
+
+  @include large-screen {
+    font-size: 34px;
+  }
 }
 
 .text {
   font-size: 32px;
   line-height: 116%;
+  text-align: center;
 
   @include tablet {
     text-align: start;
@@ -93,6 +98,10 @@
 
   @include medium-laptop {
     font-size: 56px;
+  }
+
+  @include large-screen {
+    font-size: 60px;
   }
 }
 

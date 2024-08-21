@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import HandImage from '@/public/hand.svg';
 import { inter } from '@/styles/fonts';
-import { StartGameButton } from '@/components';
+import { LinkButton } from '@/components';
 import { AppRoute, ButtonText } from '@/shared/enums';
 import { IFineshedGame, INewGame } from '@/shared/interfaces';
 
@@ -15,7 +15,7 @@ export const Greeting: React.FC<Props> = ({ type = 'start', score }) => {
   const buttonText = isNewGame ? ButtonText.START : ButtonText.TRY_AGAIN;
 
   return (
-    <div
+    <main
       className={clsx(styles.container, {
         [styles.startBackground]: isNewGame,
       })}
@@ -23,7 +23,7 @@ export const Greeting: React.FC<Props> = ({ type = 'start', score }) => {
       <div className={styles.image}>
         <Image
           src={HandImage}
-          alt=""
+          alt="hand image"
           fill
         />
       </div>
@@ -36,11 +36,11 @@ export const Greeting: React.FC<Props> = ({ type = 'start', score }) => {
           </p>
         </div>
 
-        <StartGameButton
+        <LinkButton
           buttonText={buttonText}
           link={AppRoute.GAME}
         />
       </div>
-    </div>
+    </main>
   );
 };
