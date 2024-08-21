@@ -5,14 +5,14 @@ import { AppRoute } from '@/shared/enums';
 import { inter } from '@/styles/fonts';
 import { ValueOf } from '@/shared/types/valueOf.type';
 
-import styles from './StartGameButton.module.scss';
+import styles from './LinkButton.module.scss';
 
 type Props = {
   buttonText: string;
   link: ValueOf<typeof AppRoute>;
 };
 
-export const StartGameButton: React.FC<Props> = ({ buttonText, link }) => {
+export const LinkButton: React.FC<Props> = ({ buttonText, link }) => {
   return (
     <Link
       href={link}

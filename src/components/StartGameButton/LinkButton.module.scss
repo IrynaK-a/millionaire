@@ -2,13 +2,17 @@
 @import '@/styles/mixins';
 
 .button {
+  $buttonHeight: 64px;
+  $buttonWidth: 296px;
+  $buttonFontSize: 14px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 48px;
   color: $White-100;
-  font-size: 14px; 
+  font-size: $buttonFontSize; 
   font-weight: 600;
   line-height: 116%;
   border: none;
@@ -16,19 +20,28 @@
   background-color: $Orange-100;
 
   @include small-devices {
-    height: 58px;
-    font-size: 18px; 
+    height: $buttonHeight - 6;
+    font-size: $buttonFontSize + 6; 
   }
 
   @include tablet {
-    font-size: 20px;
-    width: 296px;
-    height: 64px;
-    
+    font-size: $buttonFontSize + 6;
+    width: $buttonWidth;
+    height: $buttonHeight;
+  }
+
+  @include large-screen {
+    font-size: 28px;
+    width: $buttonWidth + 40;
+    height: $buttonHeight + 20;
   }
 
   &:hover {
     background-color: $Orange-80;
     cursor: pointer;
+  }
+
+  &:active {
+    background-color: $Orange-120;
   }
 }

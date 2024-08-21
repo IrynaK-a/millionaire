@@ -1,1 +1,1 @@
-export * from './StartGameButton';
+export * from './LinkButton';
