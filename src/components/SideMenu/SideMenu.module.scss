@@ -34,8 +34,13 @@
     transform: translateX(0%);
   }
 
+  @include medium-laptop {
+    padding-inline: 20px;
+  }
+
   @include large-screen {
     padding-block: 54px 22px;
+    padding-inline: 40px;
   }
 }
 

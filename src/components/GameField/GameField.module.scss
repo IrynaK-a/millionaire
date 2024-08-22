@@ -12,6 +12,10 @@
   @include small-laptop {
     padding: 133px 141px 122px 80px;
   }
+
+  @include large-screen {
+    padding-inline: 200px;
+  }
 }
 
 .question {
@@ -43,56 +47,4 @@
     grid-template-columns: repeat(2, minmax(421px, 1fr)) ;
     row-gap: 32px;
   }
-}
-
-.button {
-  $width: 288px;
-  display: flex;
-  align-items: center;
-  padding: 20px 24px;
-  width: 100%;
-  height: 56px;
-  background-color: $White-100;
-  font-size: 14px;
-  line-height: 116%;
-  outline: 1px solid $Black-40;
-  color: $Black-100;
-  border: none;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease; 
-
-  @include tablet {
-    font-size: 20px;
-  }
-
-  @include medium-laptop {
-    $width: 389px;
-
-    width: $width;
-    height: 72px;
-  }
-
-  &:active, &:focus {
-    outline-color: $Orange-100;
-    background-color: $Orange-5;
-  }
-
-  &:hover {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);;
-  }
-}
-
-.correct.button:focus {
-  outline-color: $Green-100;
-  background-color: $Green-5;
-}
-
-.wrong.button:focus {
-  outline-color: $Red-100;
-  background-color: $Red-5;
-}
-
-.letterPrefix {
-  margin-right: 8px;
-  color: $Orange-100;
 }

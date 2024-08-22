@@ -22,7 +22,7 @@ export const MenuShapeContainer: React.FC<Props> = ({
           [styles.activeLine]: isActive,
           [styles.passiveLine]: isPassive,
         })}
-      ></span>
+      />
 
       <div
         className={clsx(styles.shape, styles.border, {
@@ -38,7 +38,10 @@ export const MenuShapeContainer: React.FC<Props> = ({
           [styles.activeLine]: isActive,
           [styles.passiveLine]: isPassive,
         })}
-      ></span>
+      />
     </div>
   );
 };
+
+
+

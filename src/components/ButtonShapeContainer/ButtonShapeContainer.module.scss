@@ -1,0 +1,134 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+
+.container {
+  display: grid;
+  grid-template-columns: minmax(1px, 1fr) auto minmax(1px, 1fr);
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 9px;
+
+  @include medium-laptop {
+    gap: 12px
+  }
+
+  &:hover .line {
+    background-color: $Orange-100;
+  }
+
+  &:hover .shape.border:hover::before,
+  &:hover .shape.border:hover::after 
+  {
+    border-color: $Orange-100;
+  }
+}
+
+.line{
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: $Black-40;
+  transition: all 0.3s ease; 
+}
+
+
+.shape {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 288px;
+  height: 56px;
+  padding: 20px 24px;
+  font-size: 14px;
+  line-height: 116%;
+  color: $Black-100;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  @include tablet {
+    font-size: 20px;
+  }
+
+  @include medium-laptop {
+    width: 389px;
+    height: 72px;
+  }
+}
+
+
+.shape:before,
+.shape:after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 50%;
+  left: 0px;
+  z-index: -1;
+}
+
+.shape:before{
+  top: -1px; 
+  transform: perspective(15px) rotateX(3deg);
+}
+.shape:after{
+  top: 50%;
+  transform: perspective(15px) rotateX(-3deg);
+}
+
+.shape.border::before,
+.shape.border::after {
+  border: 1px solid $Black-40;
+  border-radius: 3px;  
+  transition: all 0.3s ease;
+}
+
+.shape.border::before {
+  border-bottom: none; 
+}
+
+.shape.border::after {
+  border-top: none; 
+}
+
+.correct.shape:focus.border::before,
+.correct.shape:focus.border::after {
+  border-color: $Green-100;
+  background-color: $Green-5;
+}
+
+.wrong.shape:focus.border::before,
+.wrong.shape:focus.border::after {
+  border-color: $Red-100;
+  background-color: $Red-5;
+}
+
+.shape:active.border::before, 
+.shape:active.border::after, 
+.shape:focus.border::before, 
+.shape:focus.border::after {
+  border-color: $Orange-100;
+  background-color: $Orange-5;
+}
+
+
+.container:has(.shape:active) .line,
+.container:has(.shape:focus) .line
+ {
+  background-color: $Orange-100;
+}
+
+.container .focusLine.line.correctLine {
+  background-color: $Green-100;
+}
+
+.container .focusLine.line.wrongLine {
+  background-color: $Red-100;
+}
+
+.letterPrefix {
+  margin-right: 8px;
+  color: $Orange-100;
+}

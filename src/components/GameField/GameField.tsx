@@ -1,21 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import clsx from 'clsx';
 
 import { IGameQuestion } from '@/shared/interfaces';
-import { getLetterPrefix, checkCorrectAnswer, wait } from '@/libs/utils';
+import {
+  getLetterPrefix,
+  checkCorrectAnswer,
+  wait,
+  getNextQuestion,
+} from '@/libs/utils';
 import { useDispatch } from '@/libs/hooks';
+import { ButtonShapeContainer } from '@/components';
 import gameData from '@/public/api/game.json';
 
 import styles from './GameField.module.scss';
-
-export const getNextQuestion = (
-  questions: IGameQuestion[],
-  currentQuestionId: number,
-) => {
-  return questions.find(el => el.id === currentQuestionId + 1);
-};
 
 type Props = {
   questionInfo: IGameQuestion;
@@ -87,25 +85,21 @@ export const GameField: React.FC<Props> = ({ questionInfo }) => {
             const isSelected = selectedAnswerIndex === i;
             const hasCorrectStyle = isSelected && isCorrect;
             const hasWrongStyle = isSelected && !isCorrect;
+            const letterPrefix = getLetterPrefix(i);
 
             return (
               <li
                 key={`${answer}`}
                 className={styles.item}
               >
-                <button
-                  type="button"
-                  className={clsx(styles.button, {
-                    [styles.correct]: hasCorrectStyle,
-                    [styles.wrong]: hasWrongStyle,
-                  })}
-                  onClick={() => handleClick(i)}
-                >
-                  <span className={styles.letterPrefix}>
-                    {getLetterPrefix(i)}
-                  </span>
-                  {answer}
-                </button>
+                <ButtonShapeContainer
+                  answer={answer}
+                  answerIndex={i}
+                  handleClick={handleClick}
+                  letterPrefix={letterPrefix}
+                  hasCorrectStyle={hasCorrectStyle}
+                  hasWrongStyle={hasWrongStyle}
+                />
               </li>
             );
           })}
