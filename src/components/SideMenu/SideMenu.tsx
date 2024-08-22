@@ -1,18 +1,17 @@
+import Link from 'next/link';
 import clsx from 'clsx';
 
+import { IGameQuestion } from '@/shared/interfaces';
+import { useGameState } from '@/libs/hooks';
 import gameData from '@/public/api/game.json';
 
 import styles from './SideMenu.module.scss';
-import Link from 'next/link';
-import { IGameQuestion } from '@/shared/interfaces';
 
-type Props = {
-  activePrize: number;
-};
-
-export const SideMenu: React.FC<Props> = ({ activePrize }) => {
+export const SideMenu = () => {
   const reversedData: IGameQuestion[] = [...gameData].reverse();
-  const isVisible = true;
+
+  const { questionInfo } = useGameState();
+  const { prize: activePrize } = questionInfo;
 
   return (
     <div

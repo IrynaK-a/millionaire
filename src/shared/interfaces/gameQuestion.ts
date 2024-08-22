@@ -2,6 +2,6 @@ export interface IGameQuestion {
   id: number;
   question: string;
   answers: string[];
-  correctAnswers: Number[];
+  correctAnswers: number[];
   prize: number;
 }

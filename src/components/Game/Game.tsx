@@ -1,23 +1,23 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 
-import { IGameQuestion } from '@/shared/interfaces';
-import { SideMenu, GameField } from '@/components';
-import gameData from '@/public/api/game.json';
+import { SideMenu, GameField, Greeting } from '@/components';
+import { useGameState } from '@/libs/hooks';
 
 import styles from './Game.module.scss';
 
-type Score = Pick<IGameQuestion, 'prize'> | 0;
-
 export const Game = () => {
-  const [currentQuestionInfo, setCurrentQuestionInfo] = useState<IGameQuestion>(
-    gameData[1],
-  );
-  const [score, setScore] = useState<Score>(0);
+  const { questionInfo, isGameFinished, score } = useGameState();
 
-  console.log(currentQuestionInfo);
+  if (isGameFinished) {
+    return (
+      <Greeting
+        type="finished"
+        score={score}
+      />
+    );
+  }
 
   return (
     <div className={styles.container}>
@@ -28,9 +28,9 @@ export const Game = () => {
         />
       </nav>
 
-      <GameField questionInfo={currentQuestionInfo} />
+      <GameField questionInfo={questionInfo} />
 
-      <SideMenu activePrize={currentQuestionInfo.prize} />
+      <SideMenu />
     </div>
   );
 };

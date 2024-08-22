@@ -30,9 +30,13 @@ export const Greeting: React.FC<Props> = ({ type = 'start', score }) => {
 
       <div className={styles.infoSection}>
         <div className={styles.textContainer}>
-          {score && <span className={styles.scoreTitle}>Total score:</span>}
+          {!isNewGame && (
+            <span className={styles.scoreTitle}>Total score:</span>
+          )}
           <p className={clsx(styles.text, inter.className)}>
-            {score ? `$${score} earned` : 'Who wants to be a millionaire?'}
+            {!isNewGame
+              ? `$${score?.toLocaleString()} earned`
+              : 'Who wants to be a millionaire?'}
           </p>
         </div>
 
