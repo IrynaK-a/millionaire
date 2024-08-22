@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { useState } from 'react';
 
 import { SideMenu, GameField, Greeting } from '@/components';
 import { useGameState } from '@/libs/hooks';
@@ -9,6 +9,8 @@ import styles from './Game.module.scss';
 
 export const Game = () => {
   const { questionInfo, isGameFinished, score } = useGameState();
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   if (isGameFinished) {
     return (
@@ -21,16 +23,19 @@ export const Game = () => {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.menu}>
-        <Link
-          href="#menu"
-          className={styles.link}
+      <nav className={styles.nav}>
+        <button
+          className={styles.navButton}
+          onClick={() => setIsMenuOpen(true)}
         />
       </nav>
 
       <GameField questionInfo={questionInfo} />
 
-      <SideMenu />
+      <SideMenu
+        closeMenu={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+      />
     </div>
   );
 };

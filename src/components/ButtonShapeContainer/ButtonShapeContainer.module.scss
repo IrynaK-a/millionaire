@@ -18,8 +18,8 @@
     background-color: $Orange-100;
   }
 
-  &:hover .shape.border:hover::before,
-  &:hover .shape.border:hover::after 
+  &:hover .border:hover::before,
+  &:hover .border:hover::after 
   {
     border-color: $Orange-100;
   }

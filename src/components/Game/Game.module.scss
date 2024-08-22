@@ -13,7 +13,7 @@
   }
 }
 
-.menu {
+.nav {
   position: absolute;
   top: 16px;
   right: 16px;
@@ -28,13 +28,15 @@
   }
 }
 
-.link {
+.navButton {
   display: block;
   width: 24px;
   height: 24px;
   background-image: url(../../public/menu.svg);
   background-repeat: no-repeat;
   background-position: center;
+  border: none;
+  background-color: transparent;
 
   @include small-devices {
     width: 32px;

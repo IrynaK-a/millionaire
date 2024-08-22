@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import clsx from 'clsx';
 
 import { IGameQuestion } from '@/shared/interfaces';
 import { useGameState } from '@/libs/hooks';
@@ -7,7 +7,12 @@ import gameData from '@/public/api/game.json';
 
 import styles from './SideMenu.module.scss';
 
-export const SideMenu = () => {
+type Props = {
+  isMenuOpen: boolean;
+  closeMenu: (value: boolean) => void;
+};
+
+export const SideMenu: React.FC<Props> = ({ isMenuOpen, closeMenu }) => {
   const reversedData: IGameQuestion[] = [...gameData].reverse();
 
   const { questionInfo } = useGameState();
@@ -15,13 +20,14 @@ export const SideMenu = () => {
 
   return (
     <div
-      className={styles.container}
-      id="menu"
+      className={clsx(styles.container, {
+        [styles.isOpen]: isMenuOpen,
+      })}
     >
-      <nav className={styles.menu}>
-        <Link
-          href="#"
-          className={styles.link}
+      <nav className={styles.nav}>
+        <button
+          className={styles.navButton}
+          onClick={() => closeMenu(false)}
         />
       </nav>
 
