@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import clsx from 'clsx';
 
 import { IGameQuestion } from '@/shared/interfaces';
 import { useGameState } from '@/libs/hooks';
+import { MenuShapeContainer } from '@/components';
 import gameData from '@/public/api/game.json';
 
 import styles from './SideMenu.module.scss';
@@ -32,14 +32,14 @@ export const SideMenu = () => {
 
           return (
             <li
-              className={clsx(
-                styles.item,
-                { [styles.active]: isActive },
-                { [styles.passive]: isPassive },
-              )}
+              className={styles.item}
               key={id}
             >
-              ${prize.toLocaleString()}
+              <MenuShapeContainer
+                prize={prize}
+                isActive={isActive}
+                isPassive={isPassive}
+              />
             </li>
           );
         })}

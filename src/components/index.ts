@@ -3,4 +3,4 @@ export { Greeting } from './Greeting';
 export { Game } from './Game';
 export { SideMenu } from './SideMenu';
 export { GameField } from './GameField';
-export { ShapeContainer } from './ShapeContainer';
+export { MenuShapeContainer } from './MenuShapeContainer';
