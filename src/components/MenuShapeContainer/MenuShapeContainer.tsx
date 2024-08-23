@@ -40,6 +40,3 @@ export const MenuShapeContainer: React.FC<Props> = ({
     />
   </div>
 );
-
-
-

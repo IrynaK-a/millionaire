@@ -39,7 +39,6 @@
 
 .answersSection {
   max-height: 70%;
-  
 }
 
 .list {
@@ -68,7 +67,7 @@
 
   @include medium-laptop {
     display: grid;
-    grid-template-columns: repeat(2, minmax(421px, 1fr)) ;
+    grid-template-columns: repeat(2, minmax(421px, 1fr));
     row-gap: 32px;
   }
 }
