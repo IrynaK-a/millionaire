@@ -1,3 +1,2 @@
-export const getLetterPrefix = (index: number) => {
-  return String.fromCharCode(65 + index);
-};
+export const getLetterPrefix = (index: number) =>
+  String.fromCharCode(65 + index);

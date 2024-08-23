@@ -14,34 +14,32 @@ export const MenuShapeContainer: React.FC<Props> = ({
   prize,
   isActive,
   isPassive,
-}) => {
-  return (
-    <div className={styles.container}>
-      <span
-        className={clsx(styles.line, {
-          [styles.activeLine]: isActive,
-          [styles.passiveLine]: isPassive,
-        })}
-      />
+}) => (
+  <div className={styles.container}>
+    <span
+      className={clsx(styles.line, {
+        [styles.activeLine]: isActive,
+        [styles.passiveLine]: isPassive,
+      })}
+    />
 
-      <div
-        className={clsx(styles.shape, styles.border, {
-          [styles.active]: isActive,
-          [styles.passive]: isPassive,
-        })}
-      >
-        <p>${prize.toLocaleString()}</p>
-      </div>
-
-      <span
-        className={clsx(styles.line, {
-          [styles.activeLine]: isActive,
-          [styles.passiveLine]: isPassive,
-        })}
-      />
+    <div
+      className={clsx(styles.shape, styles.border, {
+        [styles.active]: isActive,
+        [styles.passive]: isPassive,
+      })}
+    >
+      <p>${prize.toLocaleString()}</p>
     </div>
-  );
-};
+
+    <span
+      className={clsx(styles.line, {
+        [styles.activeLine]: isActive,
+        [styles.passiveLine]: isPassive,
+      })}
+    />
+  </div>
+);
 
 
 

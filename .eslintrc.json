@@ -11,6 +11,8 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "react/no-array-index-key": 0,
+    "import/prefer-default-export": "off",
     "react/function-component-definition": [
       2,
       {

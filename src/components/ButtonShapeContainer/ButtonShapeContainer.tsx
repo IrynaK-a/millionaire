@@ -4,8 +4,12 @@ import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
 import { useDispatch, useGameState } from '@/libs/hooks';
-import { getLetterPrefix, wait } from '@/libs/utils';
-import { checkAnswers, checkCorrectAnswer } from '@/libs/utils';
+import {
+  getLetterPrefix,
+  wait,
+  checkAnswers,
+  checkCorrectAnswer,
+} from '@/libs/utils';
 
 import styles from './ButtonShapeContainer.module.scss';
 
@@ -14,7 +18,10 @@ type Props = {
   answerIndex: number;
 };
 
-export const ButtonShapeContainer: React.FC<Props> = ({ answer, answerIndex }) => {
+export const ButtonShapeContainer: React.FC<Props> = ({
+  answer,
+  answerIndex,
+}) => {
   const dispatch = useDispatch();
 
   const { selectedAnswers, questionInfo, isAllAnswersSelected } =
@@ -25,7 +32,7 @@ export const ButtonShapeContainer: React.FC<Props> = ({ answer, answerIndex }) =
   const [hasCorrectStyle, setHasCorrectStyle] = useState(false);
   const [hasWrongStyle, setHasWrongStyle] = useState(false);
 
-  let isSelected = selectedAnswers.includes(answerIndex);
+  const isSelected = selectedAnswers.includes(answerIndex);
   const letterPrefix = getLetterPrefix(answerIndex);
 
   const handleClick = (index: number) => {
@@ -57,12 +64,20 @@ export const ButtonShapeContainer: React.FC<Props> = ({ answer, answerIndex }) =
       if (isAllAnswersCorrected) {
         setHasCorrectStyle(true);
       } else {
-        if (!checkCorrectAnswer(correctAnswers, answerIndex)) {
-          setHasWrongStyle(true);
+        if (checkCorrectAnswer(correctAnswers, answerIndex)) {
+          return;
         }
+
+        setHasWrongStyle(true);
       }
     })();
-  }, [isAllAnswersSelected]);
+  }, [
+    isAllAnswersSelected,
+    answerIndex,
+    correctAnswers,
+    isSelected,
+    selectedAnswers,
+  ]);
 
   return (
     <div className={styles.container}>
@@ -75,6 +90,7 @@ export const ButtonShapeContainer: React.FC<Props> = ({ answer, answerIndex }) =
       />
 
       <button
+        type="button"
         className={clsx(styles.button, styles.shape, styles.border, {
           [styles.correct]: hasCorrectStyle,
           [styles.wrong]: hasWrongStyle,

@@ -26,6 +26,8 @@ export const SideMenu: React.FC<Props> = ({ isMenuOpen, closeMenu }) => {
     >
       <nav className={styles.nav}>
         <button
+          type="button"
+          aria-label="close side menu"
           className={styles.navButton}
           onClick={() => closeMenu(false)}
         />

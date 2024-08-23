@@ -3,7 +3,7 @@
 import React, { useReducer } from 'react';
 
 import { initialState } from '@/shared/constants';
-import { IState } from '@/shared/interfaces';
+import { IState } from '@/shared/interfaces/state.interface';
 import { Action } from '@/shared/types';
 
 const reducer = (state: IState, action: Action): IState => {
@@ -18,7 +18,7 @@ const reducer = (state: IState, action: Action): IState => {
         score: action.payload ?? state.score,
       };
 
-    case 'selectAnswer':
+    case 'selectAnswer': {
       const {
         selectedAnswers,
         questionInfo: { correctAnswers },
@@ -33,6 +33,7 @@ const reducer = (state: IState, action: Action): IState => {
         selectedAnswers: newSelectedAnswers,
         isAllAnswersSelected,
       };
+    }
 
     case 'giveNextQuestion': {
       const { questionInfo, score } = action.payload;

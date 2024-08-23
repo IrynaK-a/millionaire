@@ -58,7 +58,16 @@ export const GameField = () => {
         });
       }
     })();
-  }, [isAllAnswersSelected]);
+  }, [
+    isAllAnswersSelected,
+    correctAnswers,
+    currentQuestionId,
+    dispatch,
+    gameData,
+    prize,
+    questionInfo,
+    selectedAnswers,
+  ]);
 
   return (
     <div className={styles.container}>
@@ -68,7 +77,7 @@ export const GameField = () => {
         <ul className={styles.list}>
           {answers.map((answer, i) => (
             <li
-              key={i + '-' + currentQuestionId}
+              key={`${i}-${currentQuestionId}`}
               className={styles.item}
             >
               <ButtonShapeContainer

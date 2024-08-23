@@ -25,6 +25,8 @@ export const Game = () => {
     <div className={styles.container}>
       <nav className={styles.nav}>
         <button
+          type="button"
+          aria-label="open side menu"
           className={styles.navButton}
           onClick={() => setIsMenuOpen(true)}
         />

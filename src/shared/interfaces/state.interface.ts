@@ -1,4 +1,4 @@
-import { IGameQuestion } from '@/shared/interfaces';
+import { IGameQuestion } from './gameQuestion';
 
 export interface IState {
   gameData: IGameQuestion[];
