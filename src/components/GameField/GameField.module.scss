@@ -8,6 +8,7 @@
   gap: 97px;
   padding-block: 136px 24px;
   width: 100%;
+  height: 100vh;
 
   @include small-laptop {
     padding: 133px 141px 122px 80px;
@@ -36,11 +37,34 @@
   }
 }
 
+.answersSection {
+  max-height: 70%;
+  
+}
+
 .list {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   row-gap: 8px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: $Black-40;
+    }
+  }
 
   @include medium-laptop {
     display: grid;
