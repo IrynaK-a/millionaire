@@ -1,5 +1,5 @@
 import gameData from '@/public/api/game.json';
-import { IState } from '../interfaces';
+import { IState } from '../interfaces/state.interface';
 
 export const initialState: IState = {
   gameData,
