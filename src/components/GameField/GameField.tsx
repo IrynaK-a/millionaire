@@ -1,78 +1,64 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect } from 'react';
 
-import { IGameQuestion } from '@/shared/interfaces';
-import {
-  getLetterPrefix,
-  checkCorrectAnswer,
-  wait,
-  getNextQuestion,
-} from '@/libs/utils';
-import { useDispatch } from '@/libs/hooks';
+import { wait, getNextQuestion, checkAnswers } from '@/libs/utils';
+import { useDispatch, useGameState } from '@/libs/hooks';
 import { ButtonShapeContainer } from '@/components';
-import gameData from '@/public/api/game.json';
 
 import styles from './GameField.module.scss';
 
-type Props = {
-  questionInfo: IGameQuestion;
-};
+export const GameField = () => {
+  const dispatch = useDispatch();
+  const { selectedAnswers, questionInfo, isAllAnswersSelected, gameData } =
+    useGameState();
 
-export const GameField: React.FC<Props> = ({ questionInfo }) => {
   const {
     question,
     answers,
     correctAnswers,
-    id: currentId,
+    id: currentQuestionId,
     prize,
   } = questionInfo;
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    (async () => {
+      if (!isAllAnswersSelected) {
+        return;
+      }
 
-  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(
-    null,
-  );
+      const isCorrect = checkAnswers(correctAnswers, selectedAnswers);
+      const lastQuestionId = gameData[gameData.length - 1].id;
+      const isLastQuestion = lastQuestionId === currentQuestionId;
 
-  const handleClick = async (index: number) => {
-    await wait(1500);
+      if (isCorrect && !isLastQuestion) {
+        const nextQuestion = getNextQuestion(gameData, currentQuestionId);
 
-    const isCorrect = checkCorrectAnswer(correctAnswers, index);
+        await wait(2000);
 
-    setSelectedAnswerIndex(index);
+        dispatch({
+          type: 'giveNextQuestion',
+          payload: {
+            questionInfo: nextQuestion ?? questionInfo,
+            score: prize,
+          },
+        });
+      } else if (isCorrect && isLastQuestion) {
+        await wait(2000);
 
-    const lastQuestionId = gameData[gameData.length - 1].id;
-    const isLastQuestion = lastQuestionId === currentId;
+        dispatch({
+          type: 'finishGame',
+          payload: prize,
+        });
+      } else {
+        await wait(2000);
 
-    if (isCorrect && !isLastQuestion) {
-      const nextQuestion = getNextQuestion(gameData, currentId);
-
-      await wait(1000);
-
-      dispatch({
-        type: 'giveNextQuestion',
-        payload: {
-          questionInfo: nextQuestion ?? questionInfo,
-          score: prize,
-        },
-      });
-    } else if (isCorrect && isLastQuestion) {
-      await wait(1500);
-
-      dispatch({
-        type: 'finishGame',
-        payload: prize,
-      });
-    } else {
-      await wait(1500);
-
-      dispatch({
-        type: 'finishGame',
-      });
-    }
-
-    setSelectedAnswerIndex(null);
-  };
+        dispatch({
+          type: 'finishGame',
+        });
+      }
+    })();
+  }, [isAllAnswersSelected]);
 
   return (
     <div className={styles.container}>
@@ -80,29 +66,17 @@ export const GameField: React.FC<Props> = ({ questionInfo }) => {
 
       <section className={styles.answersSection}>
         <ul className={styles.list}>
-          {answers.map((answer, i) => {
-            const isCorrect = checkCorrectAnswer(correctAnswers, i);
-            const isSelected = selectedAnswerIndex === i;
-            const hasCorrectStyle = isSelected && isCorrect;
-            const hasWrongStyle = isSelected && !isCorrect;
-            const letterPrefix = getLetterPrefix(i);
-
-            return (
-              <li
-                key={`${answer}`}
-                className={styles.item}
-              >
-                <ButtonShapeContainer
-                  answer={answer}
-                  answerIndex={i}
-                  handleClick={handleClick}
-                  letterPrefix={letterPrefix}
-                  hasCorrectStyle={hasCorrectStyle}
-                  hasWrongStyle={hasWrongStyle}
-                />
-              </li>
-            );
-          })}
+          {answers.map((answer, i) => (
+            <li
+              key={i + '-' + currentQuestionId}
+              className={styles.item}
+            >
+              <ButtonShapeContainer
+                answer={answer}
+                answerIndex={i}
+              />
+            </li>
+          ))}
         </ul>
       </section>
     </div>

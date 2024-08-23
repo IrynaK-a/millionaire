@@ -9,4 +9,5 @@ export type Action =
       };
     }
   | { type: 'finishGame'; payload?: number }
+  | { type: 'selectAnswer'; payload: number }
   | { type: 'startGame' };

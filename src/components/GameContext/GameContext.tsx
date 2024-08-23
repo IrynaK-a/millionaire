@@ -18,6 +18,22 @@ const reducer = (state: IState, action: Action): IState => {
         score: action.payload ?? state.score,
       };
 
+    case 'selectAnswer':
+      const {
+        selectedAnswers,
+        questionInfo: { correctAnswers },
+      } = state;
+
+      const newSelectedAnswers = [...selectedAnswers, action.payload];
+      const isAllAnswersSelected =
+        newSelectedAnswers.length === correctAnswers.length;
+
+      return {
+        ...state,
+        selectedAnswers: newSelectedAnswers,
+        isAllAnswersSelected,
+      };
+
     case 'giveNextQuestion': {
       const { questionInfo, score } = action.payload;
 
@@ -25,6 +41,8 @@ const reducer = (state: IState, action: Action): IState => {
         ...state,
         score,
         questionInfo,
+        selectedAnswers: [],
+        isAllAnswersSelected: false,
       };
     }
 

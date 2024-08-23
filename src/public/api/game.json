@@ -2,7 +2,7 @@
   {
     "id": 1,
     "question": "What is the capital of Australia?",
-    "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+    "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane", "Kyiv"],
     "correctAnswers": [2],
     "prize": 500
   },
@@ -64,7 +64,7 @@
     "id": 9,
     "question": "What are the primary colors?",
     "answers": ["Red", "Green", "Blue", "Black", "White"],
-    "correctAnswers": [0, 2],
+    "correctAnswers": [0, 1, 2],
     "prize": 125000
   },
   {

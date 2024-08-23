@@ -8,7 +8,7 @@ import { useGameState } from '@/libs/hooks';
 import styles from './Game.module.scss';
 
 export const Game = () => {
-  const { questionInfo, isGameFinished, score } = useGameState();
+  const { isGameFinished, score } = useGameState();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,7 +30,7 @@ export const Game = () => {
         />
       </nav>
 
-      <GameField questionInfo={questionInfo} />
+      <GameField />
 
       <SideMenu
         closeMenu={setIsMenuOpen}

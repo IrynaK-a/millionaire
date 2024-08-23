@@ -33,6 +33,10 @@
   transition: all 0.3s ease; 
 }
 
+.selected {
+  background-color: $Orange-100;
+}
+
 
 .shape {
   position: relative;
@@ -93,31 +97,23 @@
   border-top: none; 
 }
 
-.correct.shape:focus.border::before,
-.correct.shape:focus.border::after {
-  border-color: $Green-100;
-  background-color: $Green-5;
-}
-
-.wrong.shape:focus.border::before,
-.wrong.shape:focus.border::after {
-  border-color: $Red-100;
-  background-color: $Red-5;
-}
-
-.shape:active.border::before, 
-.shape:active.border::after, 
-.shape:focus.border::before, 
-.shape:focus.border::after {
+.selected.border::before, 
+.selected.border::after 
+{
   border-color: $Orange-100;
   background-color: $Orange-5;
 }
 
+.correct.border::before,
+.correct.border::after {
+  border-color: $Green-100;
+  background-color: $Green-5;
+}
 
-.container:has(.shape:active) .line,
-.container:has(.shape:focus) .line
- {
-  background-color: $Orange-100;
+.wrong.border::before,
+.wrong.border::after {
+  border-color: $Red-100;
+  background-color: $Red-5;
 }
 
 .container .focusLine.line.correctLine {
