@@ -36,6 +36,10 @@ export const ButtonShapeContainer: React.FC<Props> = ({
   const letterPrefix = getLetterPrefix(answerIndex);
 
   const handleClick = (index: number) => {
+    if (isSelected) {
+      return;
+    }
+
     if (selectedAnswers.length < correctAnswers.length) {
       dispatch({
         type: 'selectAnswer',
