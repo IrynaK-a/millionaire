@@ -1,6 +1,8 @@
 # Who Wants to Be a Millionaire?
 This is an implementation of the "Who Wants to Be a Millionaire?" game using Next.js. The player answers a series of 12 questions, each with multiple choice answers. If the answer is correct, the player moves on to the next question. If the answer is incorrect, the game ends and the final result is displayed.
 
+[**Millionaire**](https://millionaire-sigma.vercel.app/)
+
 ## Features
 
 - 12 questions with multiple choice answers.
